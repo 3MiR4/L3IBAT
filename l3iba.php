@@ -1,4 +1,5 @@
 <?php
+print("<version><center>V323MIX V1.0</version></center>\n");
 @error_reporting(0);
 @set_time_limit(0);
 @clearstatcache();

